@@ -7,9 +7,11 @@
 
 import UIKit
 
-protocol SecondViewControllerDelegate {
+protocol SecondViewControllerDelegate: AnyObject {
     //都道府県を取得するメソッドの定義
     func select(info: String)
+
+    func didCancel()
 }
 
 class ViewController: UIViewController, SecondViewControllerDelegate {
@@ -18,6 +20,10 @@ class ViewController: UIViewController, SecondViewControllerDelegate {
     //都道府県を取得し、ラベルに反映した後に、モーダルを閉じる
     func select(info: String) {
         prefectureLabel.text = info
+        dismiss(animated: true, completion: nil)
+    }
+
+    func didCancel() {
         dismiss(animated: true, completion: nil)
     }
 

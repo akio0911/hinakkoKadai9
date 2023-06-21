@@ -9,7 +9,7 @@ import UIKit
 
 class SecondViewController: UIViewController {
     //プロトコルに準拠したdelegate変数を作成
-    var delegate: SecondViewControllerDelegate? = nil
+    weak var delegate: SecondViewControllerDelegate?
 
     @IBAction func tokyoTap(_ sender: Any) {
         delegate?.select(info: "東京都")
@@ -28,6 +28,6 @@ class SecondViewController: UIViewController {
     }
 
     @IBAction func cancelTap(_ sender: Any) {
-        dismiss(animated: true)
+        delegate?.didCancel()
     }
 }
